@@ -1,5 +1,5 @@
 // Ddoski: I lost my API key! Could I use yours? (CLUE #1: See more info in the homework spec.)
-apiKey = "&appid=f9a7c9974170cfd955391620fe0cd0e7";
+apiKey = "&appid="; //accidentally uploaded token to github, so deactivated it on openweathermap.org
 
 geocodingUrl = "http://api.openweathermap.org/geo/1.0/direct?q="; // Ddoski: This is the API we use to convert city names to coordinates!
 weatherUrl = "https://api.openweathermap.org/data/2.5/weather?"; // Ddoski: This is the API we use to convert coordinates into weather data!
