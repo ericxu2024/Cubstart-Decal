@@ -38,9 +38,12 @@ async function getLatLon(city) {
   // Ddoski: Let's create the url we call the API on here. 
   // Be sure to use a url provided above, and the city name provided by the user.
   // (CLUE #2: See more info in the homework spec.)
+  console.log(geocodingUrl)
+  console.log(cityName)
+  console.log(apiKey)
   let formattedUrl = geocodingUrl + cityName + apiKey;
   let data = await apiCall(formattedUrl);
-
+  console.log(data);
   // Ddoski: We're returning a Javascript object here! 
   // Which part of the data variable do we extract for the lat and lon?
   return {
@@ -54,8 +57,9 @@ async function getLatLon(city) {
 // (CLUE #3: See more info in the homework spec.)
 async function getWeather(lat, lon) {
   /* YOUR CODE HERE */
-  let formattedUrl = weatherUrl + "lat=" + lat + + "lon=" + lon + apiKey;
+  let formattedUrl = weatherUrl + "lat=" + lat + "&lon=" + lon + apiKey;
   let data = await apiCall(formattedUrl);
+  console.log(data)
   return {
     "main": data.weather[0].main,
     "description": data.weather[0].description,
@@ -72,6 +76,7 @@ async function setWeatherDescription(city) {
   // (CLUE #4: See more info in the homework spec.)
   const lat = coordData.lat;
   const lon = coordData.lon;
+
 
   let weatherData = await getWeather(lat, lon)
   
