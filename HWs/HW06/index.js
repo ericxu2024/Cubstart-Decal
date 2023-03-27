@@ -24,7 +24,7 @@ app.post("/new", (req, res) => {
 // Ddoski: Could you make an endpoint here so that if someone makes a GET request to http://localhost:3000/cards, 
 // I send the flashcards array as a response?
 // QUESTION 1.
-app.get("/card", (req, res) => {
+app.get("/cards", async (req, res) => {
     res.send(flashcards)
 })
 
@@ -194,5 +194,5 @@ app.listen(3000, () => {
     // Let's do console.log something like "Listening on port 3000" so we know our app started.
     
     // QUESTION 4.
-    /* YOUR CODE HERE */
+    console.log("Listening on port 3000")
 })
