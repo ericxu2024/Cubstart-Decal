@@ -24,7 +24,7 @@ app.post("/new", (req, res) => {
 // Ddoski: Could you make an endpoint here so that if someone makes a GET request to http://localhost:3000/cards, 
 // I send the flashcards array as a response?
 // QUESTION 1.
-app.get("/cards", async (req, res) => {
+app.get("/cards", (req, res) => {
     res.send(flashcards)
 })
 
