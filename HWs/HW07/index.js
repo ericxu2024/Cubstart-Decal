@@ -39,7 +39,7 @@ const Flashcard = mongoose.model("Flashcard", flashcardSchema)
 // QUESTION 3. 
 app.post("/new", async (req, res) => {
     const newCard = new Flashcard({front:req.body.front, back:req.body.back});
-    await kitten.save()
+    await newCard.save()
     return res.send(newCard)
 })
 
