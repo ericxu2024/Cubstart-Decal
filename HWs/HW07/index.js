@@ -14,7 +14,7 @@ connect().catch(err => console.log(err))
 
 async function connect() {
     // QUESTION 0.
-  await mongoose.connect('YOUR URL HERE') // Copy and paste the url we got from MongoDB here, 
+  await mongoose.connect('mongodb+srv://ericxu2024:ON8bBAQI2uc76lfB@cluster0.aqxdjdc.mongodb.net/test') // Copy and paste the url we got from MongoDB here, 
   // but replace <password> with the pasword you set for your user previously.
   // It should look like this: 'mongodb+srv://cubstartuser123:pAsSWoRd123@cluster0.o1uteiq.mongodb.net/test'
 }
@@ -22,12 +22,15 @@ async function connect() {
 // Create a new mongoose.Schema here with the front as a String and the back as a String. 
 // If you're stuck, take a look at the slides from the lecture for this.
 // QUESTION 1.
-const flashcardSchema = /* YOUR CODE HERE */
+const flashcardSchema = new mongoose.Schema({
+    front: String,
+    back: String
+})
 
 // Create a new mongoose.model here with "Flashcard" as the name, using the flashcardSchema we just created.
 // If you're stuck, take a look at the slides from the lecture for this.
 // QUESTION 2.
-const Flashcard = /* YOUR CODE HERE */
+const Flashcard = mongoose.model("Flashcard", flashcardSchema)
 
 // This is a similar POST route from the last homework. 
 // However, we must modify it to add a new document to our database.
@@ -36,14 +39,14 @@ const Flashcard = /* YOUR CODE HERE */
 // QUESTION 3. 
 app.post("/new", async (req, res) => {
     const newCard = new Flashcard({front:req.body.front, back:req.body.back});
-    /* YOUR CODE HERE */ 
+    await kitten.save()
     return res.send(newCard)
 })
 
 // QUESTION 4a. Use a method in Mongoose to find all the cards we have in our database. 
 // (Hint: This is covered in lecture.)
 app.get("/cards", async (req, res) => {
-    const foundCards = await /* YOUR CODE HERE */
+    const foundCards = await Flashcard.find()
     return res.send(foundCards)
 })
 
@@ -51,7 +54,7 @@ app.get("/cards", async (req, res) => {
 // (Hint: This is covered in lecture.)
 app.get("/card/:id", async (req, res) => {
     let id = req.params.id
-    const foundCard = await /* YOUR CODE HERE */
+    const foundCard = await Flashcard.findById(req.params.id)
     return res.send(foundCard)
 })
 
@@ -59,7 +62,7 @@ app.get("/card/:id", async (req, res) => {
 // (If you're stuck, try googling what this could be!)
 app.get("/delete/:id", async (req, res) => {
     let id = req.params.id
-    const foundCard = await /* YOUR CODE HERE */
+    const foundCard = await Flashcard.findByIdAndDelete(req.params.id)
     return res.send(foundCard)
 })
 
